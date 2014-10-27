@@ -9,6 +9,9 @@ gem 'haml-rails'
 gem 'json'
 gem 'jquery-rails'
 
+gem 'hirb'
+gem 'hirb-unicode'
+
 # Vendor to Gemfile
 gem 'will_paginate'
 
