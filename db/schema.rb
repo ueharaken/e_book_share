@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20141027094254) do
 
   create_table "users", force: true do |t|
-    t.string "name",     null: false
-    t.string "password", null: false
+    t.string "name",               null: false
+    t.string "encrypted_password", null: false
   end
 
 end
