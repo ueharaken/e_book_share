@@ -3,8 +3,21 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'mysql2'
+
+gem 'haml-rails'
+gem 'json'
+gem 'jquery-rails'
+
+# Vendor to Gemfile
+gem 'will_paginate'
+
+# boostrap
+gem 'less-rails'
+gem 'therubyracer'
+gem 'twitter-bootstrap-rails', '~> 2.2.8'
+gem 'font-awesome-rails'
+gem 'bootstrap-sass', '2.3.2.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
