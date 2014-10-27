@@ -8,6 +8,9 @@ Bundler.require(:default, Rails.env)
 
 module EBookShare
   class Application < Rails::Application
+    console do
+        ActiveRecord::Base.connection
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
