@@ -1,18 +1,29 @@
-= form_for '@book' do |f|
-  %div
-    = f.label :name, 'Name'
-    = f.text_field :name
-  %div
-    = f.label :author, 'Author'
-    = f.text_field :author
-  %div
-    = f.label :publisher, 'Publisher'
-    = f.text_field :publisher
-  %div
-    = f.label :category_id, 'Category'
-    = f.select :category_id, {"hoge" => 1, "fuga" => 2}, :include_blank => true
-  %div
-    = f.label :price, 'Price'
-    = f.text_field :price
-  %div
-    = f.submit 'submit'
+= form_for '@book', :url => {:controller => 'books', :action => 'create'} do |f|
+  %table
+    %tbody
+      %tr
+        %td
+          = f.label :name, 'Name'
+        %td
+          = f.text_field :name
+      %tr
+        %td
+          = f.label :author, 'Author'
+        %td
+          = f.text_field :author
+      %tr
+        %td
+          = f.label :publisher, 'Publisher'
+        %td
+          = f.text_field :Publisher
+      %tr
+        %td
+          = f.label :category_id, 'Category'
+        %td
+          = f.text_field :category_id
+      %tr
+        %td
+          = f.label :price, 'Price'
+        %td
+          = f.text_field :price
+  = f.submit 'submit'
