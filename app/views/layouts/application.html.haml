@@ -17,4 +17,8 @@
           .container.nav-collapse
             %ul.nav
               %li= link_to "新規登録", "/books/new"
-  %yield
+      .container
+        .row
+          .span9
+            = bootstrap_flash
+            = yield
