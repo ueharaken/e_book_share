@@ -15,7 +15,7 @@
         %td
           = f.label :publisher, 'Publisher'
         %td
-          = f.text_field :Publisher
+          = f.text_field :publisher
       %tr
         %td
           = f.label :category_id, 'Category'
@@ -26,4 +26,9 @@
           = f.label :price, 'Price'
         %td
           = f.text_field :price
+      %tr
+        %td
+          = f.label :upload_file, 'upload_file'
+        %td
+          = f.file_field:upload_file
   = f.submit 'submit'

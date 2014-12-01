@@ -11,6 +11,16 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    file = params['@book']['upload_file']
+    file_name = file.original_filename
+    file_path = 'pdf/' + file_name
+    @book['path'] = file_path
+
+    f = File.new(file.tempfile.path, "rb").read
+    File.open(file_path, 'wb') do |of|
+      of.write(f)
+    end
+
     if @book.save
       redirect_to '/books/'
     else
