@@ -12,8 +12,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     file = params['@book']['upload_file']
-    file_name = file.original_filename
-    file_path = 'pdf/' + file_name
+    file_path = 'pdf/' + file.original_filename
     @book['path'] = file_path
 
     f = File.new(file.tempfile.path, "rb").read
