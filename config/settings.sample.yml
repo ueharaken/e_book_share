@@ -1,0 +1,14 @@
+defaults: &defaults
+  download:
+    path: "#{Rails.root}/tmp/donwload"
+  books:
+    width: 300
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
