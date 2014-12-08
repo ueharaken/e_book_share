@@ -3,27 +3,32 @@
     %tbody
       %tr
         %td
-          = f.label :name, 'Name'
+          = f.label :name, '名前'
         %td
           = f.text_field :name
       %tr
         %td
-          = f.label :author, 'Author'
+          = f.label :author, '著者'
         %td
           = f.text_field :author
       %tr
         %td
-          = f.label :publisher, 'Publisher'
+          = f.label :publisher, '出版社'
         %td
-          = f.text_field :Publisher
+          = f.text_field :publisher
       %tr
         %td
-          = f.label :category_id, 'Category'
+          = f.label :category_id, 'カテゴリー'
         %td
           = f.text_field :category_id
       %tr
         %td
-          = f.label :price, 'Price'
+          = f.label :price, '価格'
         %td
           = f.text_field :price
+      %tr
+        %td
+          = f.label :upload_file, 'ファイル'
+        %td
+          = f.file_field:upload_file
   = f.submit 'submit'
