@@ -63,3 +63,4 @@ end
 gem 'rb-readline'
 gem 'rmagick'
 gem 'settingslogic'
+gem 'devise'
