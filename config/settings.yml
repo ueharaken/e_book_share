@@ -1,0 +1,14 @@
+defaults: &defaults
+  download:
+    path: <%= "#{Rails.root}/tmp/download" %>
+  books:
+    width: 300
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

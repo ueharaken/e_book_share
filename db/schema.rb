@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20141206151013) do
     t.string  "publisher"
     t.integer "category_id"
     t.integer "price"
+    t.string  "path",                         null: false
     t.binary  "thumbnail",   limit: 16777215, null: false
   end
 
