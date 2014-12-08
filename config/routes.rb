@@ -1,14 +1,10 @@
 EBookShare::Application.routes.draw do
   devise_for :users
-  resources :books
   root to: "home#index"
   resources :books do
-    collection do
-      get 'get_thumbnail'
-    end
-
     member do
       post 'download_file'
+      get 'get_thumbnail'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
