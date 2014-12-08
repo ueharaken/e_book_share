@@ -6,6 +6,21 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
+  def edit
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    @book = Book.find(params[:id])
+
+    if @book.update(book_params)
+      redirect_to '/books/'
+    else
+      redirect_to 'edit'
+    end
+
+  end
+
   def new
     @book = Book.new
   end
@@ -30,18 +45,25 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to '/books/'
     else
-      render '/books/new'
+      render 'new'
     end
+  end
+
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+
+    redirect_to '/books/'
   end
 
   def get_thumbnail
     thumbnail = Book.find(params[:id])
-    send_data thumbnail.thumbnail, :disposition => 'inline', :type => 'image/jpg'
+    send_data thumbnail.thumbnail, disposition: 'inline', type: 'image/jpg'
   end
 
   def download_file
     pdf = Book.find(params[:id])
-    send_file pdf.path, :type => 'image/pdf'
+    send_file pdf.path, type: 'image/pdf'
   end
 
   private
