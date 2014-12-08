@@ -1,34 +1,29 @@
-= form_for '@book', url: {controller: 'books', action: 'create'} do |f|
+= form_for '@book', url: {controller: 'books', action: 'update'}, method: 'patch' do |f|
   %table
     %tbody
       %tr
         %td
           = f.label :name, '名前'
         %td
-          = f.text_field :name
+          = f.text_field :name, value: @book.name
       %tr
         %td
           = f.label :author, '著者'
         %td
-          = f.text_field :author
+          = f.text_field :author, value: @book.author
       %tr
         %td
           = f.label :publisher, '出版社'
         %td
-          = f.text_field :publisher
+          = f.text_field :publisher, value: @book.publisher
       %tr
         %td
           = f.label :category_id, 'カテゴリー'
         %td
-          = f.text_field :category_id
+          = f.text_field :category_id, value: @book.category_id
       %tr
         %td
           = f.label :price, '価格'
         %td
-          = f.text_field :price
-      %tr
-        %td
-          = f.label :upload_file, 'ファイル'
-        %td
-          = f.file_field:upload_file
+          = f.text_field :price, value: @book.price
   = f.submit 'submit'

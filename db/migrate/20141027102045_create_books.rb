@@ -6,6 +6,7 @@ class CreateBooks < ActiveRecord::Migration
       t.integer :publisher_id
       t.integer :category_id
       t.integer :price
+      t.string  :path, null: false
     end
   end
 end
