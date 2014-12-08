@@ -1,5 +1,13 @@
 EBookShare::Application.routes.draw do
-  resources :books
+  resources :books do
+    collection do
+      get 'get_thumbnail'
+    end
+
+    member do
+      post 'download_file'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

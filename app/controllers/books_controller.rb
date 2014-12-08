@@ -3,6 +3,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @book = Book.find(params[:id])
   end
 
   def new
@@ -31,6 +32,16 @@ class BooksController < ApplicationController
     else
       render '/books/new'
     end
+  end
+
+  def get_thumbnail
+    thumbnail = Book.find(params[:id])
+    send_data thumbnail.thumbnail, :disposition => 'inline', :type => 'image/jpg'
+  end
+
+  def download_file
+    pdf = Book.find(params[:id])
+    send_file pdf.path, :type => 'image/pdf'
   end
 
   private
