@@ -62,4 +62,5 @@ end
 
 gem 'rb-readline'
 
+gem 'devise'
 gem 'rmagick'
