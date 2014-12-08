@@ -16,7 +16,14 @@
           %a.brand(href="#") EBookShare
           .container.nav-collapse
             %ul.nav
-              %li= link_to "新規登録", "/books/new"
+              - if user_signed_in?
+                %li= current_user.name
+                %li= link_to "新規登録", "/books/new"
+                %li= link_to "プロフィール変更", edit_user_registration_path
+                %li= link_to "ログアウト", "/users/sign_out", method: :delete
+              - else
+                %li= link_to "アカウント作成", new_user_registration_path
+                %li= link_to "ログイン", new_user_session_path
       .container
         .row
           .span9
