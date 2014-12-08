@@ -57,8 +57,8 @@ class BooksController < ApplicationController
   end
 
   def get_thumbnail
-    thumbnail = Book.find(params[:id])
-    send_data thumbnail.thumbnail, disposition: 'inline', type: 'image/jpg'
+    book = Book.find(params[:id])
+    send_data book.thumbnail, disposition: 'inline', type: 'image/jpg'
   end
 
   def download_file
