@@ -1,4 +1,7 @@
 EBookShare::Application.routes.draw do
+  devise_for :users
+  resources :books
+  root to: "home#index"
   resources :books do
     collection do
       get 'get_thumbnail'

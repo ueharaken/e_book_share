@@ -1,2 +1,10 @@
-%h1 toppage
-%p Find me in app/views/hello_world/index.html.haml
+%div
+  - if @books.present?
+    %table.table
+    - @books.each_with_index do |book, i|
+      -if (i + 1) % 4 == 0
+        %tr
+      %td= image_tag(url_for(action: 'get_thumbnail', id: book.id), size:  '200x200')
+    = will_paginate @books, previous_label: '≪前', next_label: '次≫'
+  - else
+    %p 本がないよ
