@@ -1,2 +1,39 @@
-%h1 HelloWorld#index
-%p Find me in app/views/hello_world/index.html.haml
+%table 
+  %tbody
+    %tr
+      %td
+        名前:
+      %td
+        =p @book.name
+    %tr
+      %td
+        著者名:
+      %td
+        =p @book.author
+    %tr
+      %td
+        出版社:
+      %td
+        =p @book.publisher
+    %tr
+      %td
+        カテゴリー:
+      %td
+        =p @book.category_id
+    %tr
+      %td
+        価格:
+      %td
+        =p @book.price
+    %tr
+      %td
+        サムネイル:
+      %td
+        = image_tag(url_for(action: 'get_thumbnail', id: @book.id), size:  '200x200')
+    %tr
+      %td
+        = button_to 'ダウンロード', download_file_book_path(@book)
+      %td
+        = link_to '編集', edit_book_path(@book)
+      %td
+        = link_to '削除', book_path(@book), method: :delete, data: { confirm: '削除します' }
