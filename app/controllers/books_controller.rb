@@ -12,11 +12,11 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     file = params['@book']['upload_file']
-    file_path = 'pdf/' + file.original_filename
+    file_path = Settings.download.path + '/' + file.original_filename
     @book['path'] = file_path
 
     pdf = Magick::ImageList.new(file.path + '[0]')
-    pdf = pdf.resize(300,  300 * pdf.rows / pdf.columns)
+    pdf = pdf.resize(Settings.books.width,  Settings.books.width * pdf.rows / pdf.columns)
     @book['thumbnail'] = pdf.to_blob do
       self.format = 'jpg'
     end

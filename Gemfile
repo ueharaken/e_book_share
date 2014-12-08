@@ -61,5 +61,5 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'rb-readline'
-
 gem 'rmagick'
+gem 'settingslogic'
