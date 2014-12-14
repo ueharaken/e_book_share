@@ -2,12 +2,13 @@
 
 %h1
   タグ一覧
-= form_for '@tag', html: {id: 'frm', autocomplete: 'off'}, url: {controller: 'tags', action: 'create'} do |f|
+= form_for '@tag', html: {autocomplete: 'off'}, url: {controller: 'tags', action: 'create'} do |f|
   = p '検索'
   = f.text_field :name
   = f.submit '新規登録'
+
 %table
   %thead
     %tr
-      %th{style: 'text-align: left'} タグ名
+      %th タグ名
   %tbody

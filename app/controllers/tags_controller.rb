@@ -1,4 +1,6 @@
 class TagsController < ApplicationController
+  skip_before_filter :verify_authenticity_token , only: [:update]
+
   def index
     @tag = Tag.new
   end
@@ -14,6 +16,17 @@ class TagsController < ApplicationController
     else
       redirect_to '/tags'
     end
+  end
+
+  def update
+    @tag= Tag.find(params[:id])
+
+    if @tag.update(tag_params)
+      redirect_to '/tags/'
+    else
+      redirect_to '/tags/'
+    end
+
   end
 
   def destroy
