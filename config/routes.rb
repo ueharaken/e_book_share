@@ -7,6 +7,11 @@ EBookShare::Application.routes.draw do
       get 'get_thumbnail'
     end
   end
+  resources :tags do
+    collection do
+      get 'return_json_tags'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,4 @@
+= form_for '@tag', url: {controller: 'tags', action: 'create'} do |f|
+  = f.label :name, '名前'
+  = f.text_field :name
+  = f.submit 'submit'
