@@ -1,3 +1,8 @@
+%link{:href => "http://code.jquery.com/ui/1.10.3/themes/cupertino/jquery-ui.min.css", :rel => "stylesheet", :type => "text/css"}/
+%script{:src => "http://code.jquery.com/jquery-1.10.2.min.js", :type => "text/javascript"}
+%script{:src => "http://code.jquery.com/ui/1.10.3/jquery-ui.min.js", :type => "text/javascript"}
+  
+= javascript_include_tag 'js/tag_input.js'
 = form_for '@book', url: {controller: 'books', action: 'create'} do |f|
   %table
     %tbody
@@ -18,9 +23,12 @@
           = f.text_field :publisher
       %tr
         %td
-          = f.label :category_id, 'カテゴリー'
+          = f.label :tag, 'タグ'
         %td
-          = f.text_field :category_id
+          %ul
+            - 5.times do
+              %li
+                %input{type: 'text', class: 'tags', name: 'tags[]'}
       %tr
         %td
           = f.label :price, '価格'

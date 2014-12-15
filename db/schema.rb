@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141213091248) do
+ActiveRecord::Schema.define(version: 20141215060912) do
 
   create_table "books", force: true do |t|
     t.string  "name",                         null: false
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20141213091248) do
     t.string  "path",                         null: false
     t.binary  "thumbnail",   limit: 16777215, null: false
   end
+
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "taggings", ["book_id"], name: "index_taggings_on_book_id", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
 
   create_table "tags", force: true do |t|
     t.string   "name",       null: false
