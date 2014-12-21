@@ -20,7 +20,6 @@ class TagsController < ApplicationController
 
   def update
     @tag= Tag.find(params[:id])
-
     if @tag.update(tag_params)
       redirect_to '/tags/'
     else
@@ -43,6 +42,7 @@ class TagsController < ApplicationController
 
   private
   def tag_params
+    Tag.del_space(params[:@tag][:name])
     params.require(:@tag).permit(:name)
   end
 end

@@ -6,26 +6,33 @@ jQuery(function ($) {
 
   var  tags = [];
   $.getJSON('/tags/return_json_tags', function(json) {
-    if(json.length !== 0) tags = json;
+    if(json.length == 0) return $("tbody").append("<tr><td>タグがありません</td></tr>");
+    tags = json;
     search_tag(tags);
   });
 
   $("#_tag_name").keyup(function () {
+    if(tags.length == 0) return;
     $("tbody > tr").remove();
     search_tag(tags);
   });
 
   function search_tag(datas) {
-    if(datas.length == 0) return $("tbody").append("<tr><td>タグがありません</td></tr>");
-    for(var i in datas ) {
-      if(datas[i].name.indexOf($("#_tag_name").val()) != -1 || $("#_tag_name").val() == "") {
-        $("tbody").append($("<tr>")
-          .append($('<td>')
-            .append('<span id=\'name'+i+'\'>・' + datas[i].name+ '</span>'))
-          .append($('<td>')
-            .append('<input type=\'button\' value=\'編集\' onClick="javascript:edit('+i+', '+datas[i].id+', \''+datas[i].name+'\');" id=\'button'+i+'\' >'))
-          .append($('<td>')
-            .append('<a data-confirm=\'削除します\' data-method=\'delete\' href=\'/tags/' + datas[i].id + '\' rel=\'nofollow\'>削除</a>')));
+    var split_input = $("#_tag_name").val().split(' ');
+    var displayed = [];
+    for(var i in split_input) {
+      if(split_input[i] == '' && i > 0) continue;
+      for(var j in datas ) {
+        if(datas[j].name.indexOf(split_input[i]) != -1 && $.inArray(datas[j].name, displayed) == -1 || $("#_tag_name").val() == "" ) {
+          displayed.push(datas[j].name);
+          $("tbody").append($("<tr>")
+            .append($('<td>')
+              .append('<span id=\'name'+j+'\'>・' + datas[j].name+ '</span>'))
+            .append($('<td>')
+              .append('<input type=\'button\' value=\'編集\' onClick="javascript:edit('+j+', '+datas[j].id+', \''+datas[j].name+'\');" id=\'button'+j+'\' >'))
+            .append($('<td>')
+              .append('<a data-confirm=\'削除します\' data-method=\'delete\' href=\'/tags/' + datas[j].id + '\' rel=\'nofollow\'>削除</a>')));
+        }
       }
     }
   }

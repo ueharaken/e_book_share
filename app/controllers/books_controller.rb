@@ -19,6 +19,7 @@ class BooksController < ApplicationController
     if book.update(book_params)
       book.tags.delete_all
       params[:tags].each do |t|
+        Tag.del_space(t)
         unless t.empty?
           tag = Tag.find_by(name: t) || Tag.new(name: t).tap(&:save)
           book.tags << tag
@@ -55,6 +56,7 @@ class BooksController < ApplicationController
 
     if book.save
       params[:tags].each do |t|
+        Tag.del_space(t)
         unless t.empty?
           tag = Tag.find_by(name: t) || Tag.new(name: t).tap(&:save)
           book.tags << tag
