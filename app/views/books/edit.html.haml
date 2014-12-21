@@ -21,10 +21,10 @@
         %td
           = f.label :tag, 'タグ'
         %td
-          %ul
-            - 5.times do
+          %ul{style: 'list-style-type: none;'}
+            - 5.times do |i|
               %li
-                %input{type: 'text', class: 'tags', name: 'tags[]'}
+                %input{type: 'text', class: 'tags', name: 'tags[]', value: @tag[i].tap{|t| unless t.nil? then break t.name end } }
       %tr
         %td
           = f.label :price, '価格'
