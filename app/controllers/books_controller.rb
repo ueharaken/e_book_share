@@ -69,6 +69,7 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])
     Tagging.delete_all(book_id: book.id)
+    File.delete(book.path)
     book.destroy
 
     redirect_to '/books/'
