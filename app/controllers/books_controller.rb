@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.paginate(page: params[:page], per_page: 20)
+    @books = Book.by_name(params[:name]).by_author([:author]).by_publisher(params[:publisher]).paginate(page: params[:page], per_page: 20)
   end
 
   def show

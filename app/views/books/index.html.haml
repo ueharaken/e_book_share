@@ -1,6 +1,21 @@
 %div
+  = form_tag({:action => "index"}, :method => "get") do
+    = hidden_field_tag(:only, params[:only])
+    %table.show_table
+      %tr
+        %th{width: "160"} タイトル
+        %td= text_field_tag(:name, params[:name])
+      %tr
+        %th 著者
+        %td= text_field_tag(:author, params[:author])
+      %tr
+        %th 出版社
+        %td= text_field_tag(:publisher, params[:publisher])
+      %tr
+        %th
+        %td.submit= submit_tag "検索", :name => nil
+      %table.table
   - if @books.present?
-    %table.table
     - @books.each_with_index do |book, i|
       -if (i + 1) % 4 == 0
         %tr
