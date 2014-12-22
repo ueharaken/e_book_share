@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.search(name_cont: params[:name], author_cont: params[:author], publisher_cont: params[:publisher]).result.paginate(page: params[:page], per_page: 20)
+    @books = Book.order(params[:sort] || "created_at" + " DESC").search(name_cont: params[:name], author_cont: params[:author], publisher_cont: params[:publisher]).result.paginate(page: params[:page], per_page: 20)
   end
 
   def show

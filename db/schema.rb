@@ -11,16 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141215060912) do
+ActiveRecord::Schema.define(version: 20141222053657) do
 
   create_table "books", force: true do |t|
-    t.string  "name",                         null: false
-    t.string  "author"
-    t.string  "publisher"
-    t.integer "category_id"
-    t.integer "price"
-    t.string  "path",                         null: false
-    t.binary  "thumbnail",   limit: 16777215, null: false
+    t.string   "name",                         null: false
+    t.string   "author"
+    t.string   "publisher"
+    t.integer  "category_id"
+    t.integer  "price"
+    t.string   "path",                         null: false
+    t.binary   "thumbnail",   limit: 16777215, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "taggings", force: true do |t|
@@ -50,6 +52,8 @@ ActiveRecord::Schema.define(version: 20141215060912) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree

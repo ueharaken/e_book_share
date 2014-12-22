@@ -1,4 +1,5 @@
 %div
+
   = form_tag({:action => "index"}, :method => "get") do
     = hidden_field_tag(:only, params[:only])
     %table.show_table
@@ -11,6 +12,9 @@
       %tr
         %th 出版社
         %td= search_field_tag(:publisher, params[:publisher])
+      %tr
+        %th 並び替え
+        %td= select_tag(:sort, options_for_select([["登録日順", :created_at], ["名前順", :name], ["著者順", :author]], params[:sort]))
       %tr
         %th
         %td.submit= submit_tag "検索", :name => nil
