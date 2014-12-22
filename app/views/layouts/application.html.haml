@@ -5,27 +5,28 @@
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-  %body
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand(href="#") EBookShare
-          .container.nav-collapse
-            %ul.nav
-              - if user_signed_in?
-                %li= current_user.name
-                %li= link_to "新規登録", "/books/new"
-                %li= link_to "プロフィール変更", edit_user_registration_path
-                %li= link_to "ログアウト", "/users/sign_out", method: :delete
-              - else
-                %li= link_to "アカウント作成", new_user_registration_path
-                %li= link_to "ログイン", new_user_session_path
-    .container{ style: 'margin-top: 50px' }
-      .row
-        .span9
-          = bootstrap_flash
-          = yield
+    %body
+      .navbar.navbar-fixed-top
+        .navbar-inner
+          .container
+            %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            %a.brand(href="#") EBookShare
+            .container.nav-collapse
+              %ul.nav
+                - if user_signed_in?
+                  %li= current_user.name
+                  %li= link_to "新規登録", "/books/new"
+                  %li= link_to "本一覧", "/books"
+                  %li= link_to "プロフィール変更", edit_user_registration_path
+                  %li= link_to "ログアウト", "/users/sign_out", method: :delete
+                - else
+                  %li= link_to "アカウント作成", new_user_registration_path
+                  %li= link_to "ログイン", new_user_session_path
+      .container{style: "margin-top: 50px"}
+        .row
+          .span9
+            = bootstrap_flash
+            = yield
