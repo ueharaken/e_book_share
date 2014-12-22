@@ -24,8 +24,8 @@
               - else
                 %li= link_to "アカウント作成", new_user_registration_path
                 %li= link_to "ログイン", new_user_session_path
-      .container
-        .row
-          .span9
-            = bootstrap_flash
-            = yield
+    .container{ style: 'margin-top: 50px' }
+      .row
+        .span9
+          = bootstrap_flash
+          = yield
