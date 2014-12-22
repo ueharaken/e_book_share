@@ -1,3 +1,4 @@
+= javascript_include_tag 'js/tag_input.js'
 = form_for '@book', url: {controller: 'books', action: 'create'} do |f|
   %table
     %tbody
@@ -18,9 +19,12 @@
           = f.text_field :publisher
       %tr
         %td
-          = f.label :category_id, 'カテゴリー'
+          = f.label :tag, 'タグ'
         %td
-          = f.text_field :category_id
+          %ul{style: 'list-style-type: none;'}
+            - 5.times do
+              %li
+                %input{type: 'text', class: 'tags', name: 'tags[]'}
       %tr
         %td
           = f.label :price, '価格'
