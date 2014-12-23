@@ -3,6 +3,9 @@ defaults: &defaults
     path: "#{Rails.root}/tmp/donwload"
   books:
     width: 300
+  basic:
+    username: 'username'
+    password: 'password'
 
 development:
   <<: *defaults
