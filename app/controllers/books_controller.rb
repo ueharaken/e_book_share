@@ -10,7 +10,6 @@ class BooksController < ApplicationController
     @b = Book.order(params[:sort] || "created_at DESC")
       .where(where)
       .search(params[:q])
-    @sql = @b.result.to_sql
     @books = @b.result.paginate(page: params[:page], per_page: 20)
   end
 
