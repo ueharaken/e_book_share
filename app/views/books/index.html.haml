@@ -1,20 +1,34 @@
+=javascript_include_tag 'js/book_tag_search.js'
+=p params
 %div
 
-  = form_tag({:action => "index"}, :method => "get") do
+  = search_form_for @b do |f| 
     = hidden_field_tag(:only, params[:only])
     %table.show_table
       %tr
+        %th タグ
+        %td
+          = p 'タグ絞り込み'
+          %input{ type: 'text', id: '_tag_name', name: 'tag_name', value: params[:tag_name]}
+          %p{style: 'margin-left: 20px'} ※半角スペースでor検索
+          %table{ class: 'tag_list' }
+            %thead
+              %tr
+                %th{style: 'text-align: left;'} タグ名
+            %tbody
+
+      %tr
         %th{width: "160"} タイトル
-        %td= search_field_tag(:name, params[:name])
+        %td= f.search_field :name_cont
       %tr
         %th 著者
-        %td= search_field_tag(:author, params[:author])
+        %td= f.search_field :author_cont
       %tr
         %th 出版社
-        %td= search_field_tag(:publisher, params[:publisher])
+        %td= f.search_field :publisher_cont
       %tr
         %th 並び替え
-        %td= select_tag(:sort, options_for_select([["登録日順", :created_at], ["名前順", :name], ["著者順", :author]], params[:sort]))
+        %td= select_tag(:sort, options_for_select([["登録が新しい順", "created_at DESC"], ["登録が古い順", "created_at"], ["名前昇順", "name"], ["名前降順", "name DESC"], ["著者昇順", :author], ["著者降順", "author DESC"]], params[:sort]))
       %tr
         %th
         %td.submit= submit_tag "検索", :name => nil

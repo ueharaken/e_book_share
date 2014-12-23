@@ -8,8 +8,10 @@
   = f.submit '新規登録'
   %p{style: 'margin-left: 20px'} ※半角スペースでor検索になります
 
-%table
-  %thead
-    %tr
-      %th{style: 'text-align: left;'} タグ名
-  %tbody
+= search_form_for @b do |frm|
+  %table{ class: 'tag_list' }
+    %thead
+      %tr
+        %th{style: 'text-align: left;'} タグ名
+    %tbody
+  = button_to 'チェックを付けたタグで検索'

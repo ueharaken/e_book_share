@@ -3,6 +3,7 @@ class TagsController < ApplicationController
 
   def index
     @tag = Tag.new
+    @b = Book.search
   end
   
   def new
