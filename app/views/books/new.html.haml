@@ -20,11 +20,13 @@
       %tr
         %td
           = f.label :tag, 'タグ'
+          %p
+            %input{type: 'button', class: 'add_tag', value: '追加'}
+            %input{type: 'button', class: 'remove_tag', value: '削除'}
         %td
-          %ul{style: 'list-style-type: none;'}
-            - 5.times do
-              %li
-                %input{type: 'text', class: 'tags', name: 'tags[]'}
+          %ul{ id: 'input_taglist', style: 'list-style-type: none;'}
+            %li
+              %input{type: 'text', class: 'tags', name: 'tags[]'}
       %tr
         %td
           = f.label :price, '価格'
