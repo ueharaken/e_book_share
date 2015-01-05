@@ -1,19 +1,14 @@
 jQuery(function ($) {
-  ENTER_KEY = 13
-  $("form").on("keypress", "input:not(:submit), select", function(ev) {
-    return ev.which !== ENTER_KEY && ev.keyCode !== ENTER_KEY
-  });
-
   var  tags = [];
   $.getJSON('/tags/return_json_tags', function(json) {
-    if(json.length == 0) return $(".tag_list > tbody").append("<tr><td>タグがありません</td></tr>");
+    if(json.length == 0) return $(".tag_list").append("<p>タグがありません</p>");
     tags = json;
     search_tag(tags);
   });
 
   $("#_tag_name").keyup(function () {
     if(tags.length == 0) return;
-    $(".tag_list > tbody > tr").remove();
+    $(".tag_list > *").remove();
     search_tag(tags);
   });
 
@@ -23,13 +18,13 @@ jQuery(function ($) {
     for(var i in split_input) {
       if(split_input[i] == '' && i > 0) continue;
       for(var j in datas ) {
+        if(displayed.length == 30) return;
         if(datas[j].name.indexOf(split_input[i]) != -1 && $.inArray(datas[j].name, displayed) == -1 || $("#_tag_name").val() == "" ) {
           displayed.push(datas[j].name);
           var checked = is_checked(datas[j].id);
-          $(".tag_list > tbody").append($("<tr>")
-            .append($('<td>')
-              .append('<input id="tag_id_'+datas[j].id+'" name="tag_id[]" type="checkbox" '+checked+' value="'+datas[j].id+'">' )
-              .append('<label for="tag_id_'+datas[j].id+'" id=\'name'+j+'\'>' + datas[j].name+ '</span>')));
+          $(".tag_list").append($("<p>")
+            .append('<input id="tag_id_'+datas[j].id+'" name="tag_id[]" type="checkbox" '+checked+' value="'+datas[j].id+'">' )
+            .append('<label for="tag_id_'+datas[j].id+'" id=\'name'+j+'\'>' + datas[j].name+ '</span>'));
         }
       }
     }

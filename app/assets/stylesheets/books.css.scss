@@ -2,6 +2,236 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.ui-helper-hidden-accessible {
-	display: none;
+.book-list {
+  margin: 0 auto;
+  list-style-type: none;
+  font-size: 0;
+}
+
+.book-list li {
+  display: inline-block;
+  vertical-align: top;
+  padding-bottom: 30px;
+}
+
+.book-list img {
+  display: block;
+  width: 250px;
+}
+
+.book-list p {
+  margin: 0;
+  color: #585858;
+  border-top: 1px solid #d4d4d4;
+  border-bottom: 1px solid #d4d4d4;
+  border-left: 1px solid #d4d4d4;
+  background-color: #F6F6F6;
+  font-weight: normal;
+  font-size: medium;
+  width: 248px;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.book-list li:last-child p {
+  border-right: 1px solid #d4d4d4;
+}
+
+.book-table th {
+  font-weight: normal;
+  vertical-align: middle;
+  background-color: #F6F6F6;
+  border-top: 1px solid #d4d4d4;
+  border-bottom: 1px solid #d4d4d4;
+  border-left: 1px solid #d4d4d4;
+  padding: 0;
+  width: 249px;
+}
+
+.book-table th:last-child {
+  border-right: 1px solid #d4d4d4;
+}
+
+
+.book-table td {
+  vertical-align: top;
+  padding: 0;
+  padding-bottom: 30px;
+  display: inline-block;
+}
+
+.book-table td img {
+  display: block;
+  width: 250px;
+}
+
+.book-table p {
+  text-align: center;
+  padding: 3px 4px;
+  width: 240px;
+  margin: 0;
+  color: #585858
+}
+
+div.tag_list {
+  width: 600px;
+}
+
+.show-book {
+  margin: 0 70px;
+}
+
+.show-book img {
+  width: 250px;
+  vertical-align: top;
+  float: left;
+}
+
+.book-info {
+  display: inline-block;
+  margin-left: 30px;
+  margin-top: 20px;
+  width: 300px;
+  float: left;
+}
+
+.book-info h3 {
+  margin: 0;
+  color: #585858;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.book-info ul {
+  list-style-type: none;
+  margin: 0;
+}
+
+.book-info li {
+  padding: 3px;
+}
+
+.book-info table {
+  margin: 10px;
+}
+
+.book-info td {
+  padding: 5px 0;
+}
+
+.book-info p {
+  text-align: center;
+}
+
+.book-info div {
+  text-align: center;
+  border-top: 1px solid #d4d4d4;
+  padding-top: 20px;
+}
+
+.book-info a {
+  display: inline-block;
+}
+
+.controll {
+  vertical-align: top;
+  float: right;
+  margin-top: 30px;
+}
+
+.controll input {
+  padding: 30px;
+  font-size: 140%;
+  color: #585858;
+}
+
+.controll td {
+  padding: 20px;
+  text-align: center;
+  vertical-align: top;
+}
+
+#book_search {
+  overflow: hidden;
+}
+
+.adjust_height {
+  height: auto !important;
+}
+
+@media screen and (max-width: 667px) {
+
+  #on-off-label {
+    cursor: pointer;
+  }
+
+  .input-table th, .input-table tr, .input-table td {
+    display: block;
+    border: none;
+  }
+
+  .input-table tr {
+    border-bottom: 1px solid #d4d4d4;
+  }
+
+  .input-table input {
+    margin: 0;
+  }
+
+  .input-table div {
+    width: 100%;
+  }
+
+  .input-table {
+    width: 100%;
+  }
+
+
+  .show-book {
+    margin: 0 auto;
+  }
+
+  .show-book img {
+    width: 100%;
+    max-width: 350px;
+    display: block;
+    margin: 0 auto;
+    float: none;
+  }
+
+  .book-info {
+    display: block;
+    margin-left: 0;
+    width: auto;
+    float: none;
+  }
+
+  .controll {
+    float: none;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+
+  .book-list {
+    width: 100%;
+    border: none;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  .book-list p {
+    width: 100%;
+    font-size: small;
+  }
+
+  .book-list li {
+    width: 49%;
+  }
+
+  .book-list img {
+    width: 100%;
+  }
+
+  .book-list li:nth-child(even) p {
+    border-right: 1px solid #d4d4d4;
+  }
 }

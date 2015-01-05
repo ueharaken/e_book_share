@@ -12,6 +12,8 @@ jQuery(function ($) {
   });
 
   $("#_tag_name").keyup(function () {
+    $("#search-hidden").remove();
+    $(".tag_list").append("<input type='hidden' value='" + $("#_tag_name").val() + "' id='search-hidden' name='tag_name'>");
     if(tags.length == 0) return;
     $(".tag_list > tbody > tr").remove();
     search_tag(tags);
@@ -40,6 +42,6 @@ jQuery(function ($) {
 });
 
 function edit(i, id, name) {
-  $("#name"+i).replaceWith('<form action=\'/tags/'+id+'/update\' method=\'post\' name=\'frm'+i+'\'><input type=\'text\' name=\'@tag[name]\' value=\''+name+'\'></form>');
+  $("#name"+i).replaceWith('<form class=\'edit-tag\' action=\'/tags/'+id+'/update\' method=\'post\' name=\'frm'+i+'\'><input type=\'text\' name=\'@tag[name]\' value=\''+name+'\'></form>');
   $("#button"+i).replaceWith('<input type=\'button\' value=\'登録\' onClick="javascript:document.frm'+i+'.submit();">');
 }
