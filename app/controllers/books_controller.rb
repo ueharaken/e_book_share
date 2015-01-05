@@ -50,6 +50,7 @@ class BooksController < ApplicationController
   def create
     book = Book.new(book_params)
     file = params['@book']['upload_file']
+    file.original_filename = SecureRandom.uuid + file.original_filename
     file_path = Settings.download.path + '/' + file.original_filename
     book['path'] = file_path
 
@@ -94,7 +95,7 @@ class BooksController < ApplicationController
 
   def download_file
     pdf = Book.find(params[:id])
-    send_file pdf.path, type: 'image/pdf'
+    send_file pdf.path, filename: pdf.name + '.pdf', type: 'image/pdf'
   end
 
   private
