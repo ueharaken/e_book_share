@@ -25,21 +25,25 @@ jQuery(function ($) {
       for(var j in datas ) {
         if(datas[j].name.indexOf(split_input[i]) != -1 && $.inArray(datas[j].name, displayed) == -1 || $("#_tag_name").val() == "" ) {
           displayed.push(datas[j].name);
+          var checked = is_checked(datas[j].id);
           $(".tag_list > tbody").append($("<tr>")
             .append($('<td>')
-              .append('<input id="tag_id_'+datas[j].id+'" name="tag_id[]" type="checkbox" value="'+datas[j].id+'">')
-              .append('<label for="tag_id_'+datas[j].id+'" id=\'name'+j+'\'>' + datas[j].name+ '</span>'))
-            .append($('<td>')
-              .append('<input type=\'button\' value=\'編集\' onClick="javascript:edit('+j+', '+datas[j].id+', \''+datas[j].name+'\');" id=\'button'+j+'\' >'))
-            .append($('<td>')
-              .append('<a data-confirm=\'削除します\' data-method=\'delete\' href=\'/tags/' + datas[j].id + '\' rel=\'nofollow\'>削除</a>')));
+              .append('<input id="tag_id_'+datas[j].id+'" name="tag_id[]" type="checkbox" '+checked+' value="'+datas[j].id+'">' )
+              .append('<label for="tag_id_'+datas[j].id+'" id=\'name'+j+'\'>' + datas[j].name+ '</span>')));
         }
       }
     }
   }
-});
 
-function edit(i, id, name) {
-  $("#name"+i).replaceWith('<form action=\'/tags/'+id+'/update\' method=\'post\' name=\'frm'+i+'\'><input type=\'text\' name=\'@tag[name]\' value=\''+name+'\'></form>');
-  $("#button"+i).replaceWith('<input type=\'button\' value=\'登録\' onClick="javascript:document.frm'+i+'.submit();">');
-}
+  function is_checked(tag_id) { 
+    var vars = [], hash; 
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&'); 
+    for(var i = 0; i < hashes.length; i++) { 
+        hash = hashes[i].split('=');
+        if (hash[0] == 'tag_id%5B%5D') {
+          if(hash[1] == tag_id) return 'checked'
+        }
+    }
+    return ''; 
+  }
+});
