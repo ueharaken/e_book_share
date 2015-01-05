@@ -1,6 +1,6 @@
 =javascript_include_tag 'js/tag_search.js'
 
-%h1
+%h3#title
   タグ一覧
 = form_for '@tag', html: {autocomplete: 'off'}, url: {controller: 'tags', action: 'create'} do |f|
   = p '検索'
@@ -10,8 +10,5 @@
 
 = search_form_for @b do |frm|
   %table{ class: 'tag_list' }
-    %thead
-      %tr
-        %th{style: 'text-align: left;'} タグ名
     %tbody
   = button_to 'チェックを付けたタグで検索'

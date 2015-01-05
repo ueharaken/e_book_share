@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h3 id='title'>プロフィール変更</h3>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -13,27 +13,25 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password, "新しいパスワード" %> <i>(変更をしたくない場合は空白にしてください)</i><br />
+    <%= f.label :password, "新しいパスワード" %> <i>(変更させたくない場合は空白にしてください)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation, "新しいパスワードをもう一度入力してください" %><br />
+    <%= f.label :password_confirmation, "新しいパスワード(再入力)" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password, "古いパスワード" %> <i>(変更をするために古いパスワードを入力してください)</i><br />
+    <%= f.label :current_password, "現在のパスワード" %> <i>(変更するために現在のパスワードを入力してください)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
-  <div class="actions">
+  <div class="submit">
     <%= f.submit "更新" %>
   </div>
 <% end %>
 
-<h3>アカウントを削除？</h3>
+<h3 id='title'>アカウントを削除？</h3>
 
-<p>適切ではないですか? <%= button_to "アカウントを削除", registration_path(resource_name), data: { confirm: "本当にアカウントを消して良いですか" }, method: :delete %></p>
-
-<%= link_to "戻る", :back %>
+<p> <%= button_to "アカウントを削除", registration_path(resource_name), data: { confirm: "本当にアカウントを消して良いですか" }, method: :delete %></p>

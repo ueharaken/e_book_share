@@ -1,24 +1,26 @@
 = javascript_include_tag 'js/tag_input.js'
+
+%h3#title 書籍登録
 = form_for '@book', url: {controller: 'books', action: 'create'} do |f|
-  %table
+  %table.input-table
     %tbody
       %tr
-        %td
+        %th
           = f.label :name, '名前'
         %td
           = f.text_field :name
       %tr
-        %td
+        %th
           = f.label :author, '著者'
         %td
           = f.text_field :author
       %tr
-        %td
+        %th
           = f.label :publisher, '出版社'
         %td
           = f.text_field :publisher
       %tr
-        %td
+        %th
           = f.label :tag, 'タグ'
           %p
             %input{type: 'button', class: 'add_tag', value: '追加'}
@@ -28,13 +30,13 @@
             %li
               %input{type: 'text', class: 'tags', name: 'tags[]'}
       %tr
-        %td
+        %th
           = f.label :price, '価格'
         %td
           = f.text_field :price
       %tr
-        %td
+        %th
           = f.label :upload_file, 'ファイル'
         %td
           = f.file_field:upload_file
-  = f.submit 'submit'
+  %p.submit= f.submit '登録'

@@ -1,24 +1,17 @@
 =javascript_include_tag 'js/book_tag_search.js'
+=javascript_include_tag 'js/search_form.js'
 
-%div
-
+%div.clearfix
+  %label#on-off-label{for: 'Panel1'}
+    %h3#title
+      書籍検索
+      %input#Panel1.on-off{:type => "checkbox"}
+      %span.signpost
   = search_form_for @b do |f| 
     = hidden_field_tag(:only, params[:only])
-    %table.show_table
+    %table.input-table
       %tr
-        %th タグ
-        %td
-          = p 'タグ絞り込み'
-          %input{ type: 'text', id: '_tag_name', name: 'tag_name', value: params[:tag_name]}
-          %p{style: 'margin-left: 20px'} ※半角スペースでor検索
-          %table{ class: 'tag_list' }
-            %thead
-              %tr
-                %th{style: 'text-align: left;'} タグ名
-            %tbody
-
-      %tr
-        %th{width: "160"} タイトル
+        %th タイトル
         %td= f.search_field :name_cont
       %tr
         %th 著者
@@ -31,13 +24,30 @@
         %td= select_tag(:sort, options_for_select([["登録が新しい順", "created_at DESC"], ["登録が古い順", "created_at"], ["名前昇順", "name"], ["名前降順", "name DESC"], ["著者昇順", :author], ["著者降順", "author DESC"]], params[:sort]))
       %tr
         %th
-        %td.submit= submit_tag "検索", :name => nil
-      %table.table
+          %p タグ
+          %p
+            タグ絞り込み
+            %br
+            %input{ type: 'text', id: '_tag_name', name: 'tag_name', value: params[:tag_name], autocomplete: 'off'}
+          %p
+            ※半角スペースでor検索
+            %br
+            ※表示は30件まで
+        %td
+          %div{ class: 'tag_list' }
+
+    %p.submit=submit_tag "検索", :name => nil
+  %h3#title 書籍一覧
+  = will_paginate @books, previous_label: '≪前', next_label: '次≫'
   - if @books.present?
-    - @books.each_with_index do |book, i|
-      -if (i + 1) % 4 == 0
-        %tr
-      %td= link_to image_tag(url_for(action: 'get_thumbnail', id: book.id), size:  '200x200', border: '0'), book_path(book.id)
-    = will_paginate @books, previous_label: '≪前', next_label: '次≫'
+    - @books.each_slice(4) do |row|
+      %ul.book-list
+        -row.each do |book|
+          %li
+            %p= book.name.length > 10 ? book.name[0, 10] + '...' : book.name
+            =link_to image_tag(url_for(action: 'get_thumbnail', id: book.id), size:  '200x200', border: '0'), book_path(book.id)
   - else
-    %p 本がないよ
+    %p 検索条件に一致する結果が見つかりませんでした
+  = will_paginate @books, previous_label: '≪前', next_label: '次≫'
+
+
