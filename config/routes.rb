@@ -1,4 +1,6 @@
 EBookShare::Application.routes.draw do
+  resources :bookshelves
+
   devise_for :users
   root to: "home#index"
   resources :books do

@@ -1,0 +1,10 @@
+= form_for @bookshelf do |f|
+  - if @bookshelf.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@bookshelf.errors.count, "error")} prohibited this bookshelf from being saved:"
+      %ul
+        - @bookshelf.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

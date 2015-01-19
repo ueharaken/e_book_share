@@ -1,0 +1,7 @@
+- if @.present?
+  %table.show_table
+  - @bookshelves.each do |bookshelf|
+    %tr
+      %td= bookshelf.tag.name
+- else
+  %p 本がないよ

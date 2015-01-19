@@ -1,0 +1,29 @@
+%div
+
+  = form_tag({:action => "index"}, :method => "get") do
+    = hidden_field_tag(:only, params[:only])
+    %table.show_table
+      %tr
+        %th{width: "160"} タイトル
+        %td= search_field_tag(:name, params[:name])
+      %tr
+        %th 著者
+        %td= search_field_tag(:author, params[:author])
+      %tr
+        %th 出版社
+        %td= search_field_tag(:publisher, params[:publisher])
+      %tr
+        %th 並び替え
+        %td= select_tag(:sort, options_for_select([["登録日順", :created_at], ["名前順", :name], ["著者順", :author]], params[:sort]))
+      %tr
+        %th
+        %td.submit= submit_tag "検索", :name => nil
+      %table.table
+  - if @books.present?
+    - @books.each_with_index do |book, i|
+      -if (i + 1) % 4 == 0
+        %tr
+      %td= link_to image_tag(url_for(action: 'get_thumbnail', id: book.id), size:  '200x200', border: '0'), book_path(book.id)
+    = will_paginate @books, previous_label: '≪前', next_label: '次≫'
+  - else
+    %p 本がないよ
