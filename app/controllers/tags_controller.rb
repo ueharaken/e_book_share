@@ -32,6 +32,7 @@ class TagsController < ApplicationController
   def destroy
     tag = Tag.find(params[:id])
     Tagging.delete_all(tag_id: tag.id)
+    Bookshelf.delete_all(tag_id: tag.id)
     tag.destroy
 
     redirect_to '/tags/'

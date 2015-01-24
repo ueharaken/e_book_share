@@ -1,3 +1,20 @@
 // Place all the styles related to the tags controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tag_list th, .tag_list td{
+  border: solid 1px #d4d4d4;
+}
+.tag_list th {
+  background-color: #f2f2f2;
+}
+.tag_list td {
+  padding: 5px 5px;
+}
+.tag_list td:not(:first-child) {
+  text-align: center;
+}
+
+#search-by-tag {
+  margin-top: 20px;
+}

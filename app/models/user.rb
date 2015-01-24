@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :name
   validates_presence_of :name
 
+  has_many :bookshelves
+  has_many :tags, through: :bookshelves
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
