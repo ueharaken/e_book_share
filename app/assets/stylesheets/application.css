@@ -10,4 +10,163 @@
  *
  *= require_self
  *= require_tree .
+ *= require jquery-ui
  */
+
+.contain {
+  width: 1000px;
+  margin: 0 auto;
+  margin-top: 61px;
+  margin-bottom: 100px;
+}
+
+#title {
+  color: #585858;
+  border-bottom: 1px solid #d4d4d4;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+#name {
+  padding: 10px 15px 10px;
+}
+
+.submit {
+  text-align: center;
+  padding: 20px;
+}
+
+.submit input {
+  padding: 10px 40px;
+}
+
+.pagination {
+  text-align: center;
+}
+
+.pagination * {
+  padding: 3px;
+}
+
+.input-table {
+  margin: 0 auto;
+}
+
+.input-table tr {
+}
+
+.input-table th {
+  font-weight: normal;
+  padding: 20px 50px 20px 20px;
+  color: #585858;
+  border: 1px solid #d4d4d4;
+  text-align: left;
+  vertical-align: top;
+}
+
+.input-table td {
+  padding: 10px;
+  vertical-align: top;
+  border: 1px solid #d4d4d4;
+}
+
+.input-table td input[type='text'] {
+  margin-right: 50px;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+.input-table td ul {
+  margin: 0;
+}
+
+.tag_list p {
+  display: inline-block;
+  padding: 0 5px;
+}
+
+.tag_list label {
+  display: inline;
+  padding-left: 3px;
+}
+
+.tag_list form {
+  margin-bottom: 0;
+}
+
+.edit-tag {
+  display: inline-block;
+}
+
+.edit-tag input[type='text'] {
+  margin-bottom: 0;
+}
+
+.ui-helper-hidden-accessible {
+	display: none;
+}
+
+.field_with_errors input {
+  background-color: #FFD2D2 !important;
+}
+
+#error_explanation h2, #error_explanation li {
+  color: red;
+}
+
+#error_explanation ul {
+  list-style-type: none;
+}
+
+.on-off {
+  display: none;
+}
+
+#on-off-label{
+  cursor: default;
+}
+
+
+
+@media screen and (max-width: 979px) {
+  .contain {
+    margin-top: 0;
+  }
+
+  #name {
+    padding: 9px 15px;
+  }
+}
+
+
+@media screen and (max-width: 667px) {
+  .contain {
+    width: auto;
+  }
+
+  .signpost {
+    width: 0;
+    border: 15px solid black;
+    border-top-color: #585858;
+    border-bottom: none;
+    border-right-color: white;
+    border-left-color: white;
+    position: absolute;
+    top: 30%;
+    margin-left: 20px;
+  }
+
+  input[type="checkbox"].on-off:checked + .signpost {
+    border: 15px solid black;
+    border-top: none;
+    border-bottom-color: #585858;
+    border-right-color: white;
+    border-left-color: white;
+  }
+
+  .tag_list input {
+    width: 130px;
+  }
+}

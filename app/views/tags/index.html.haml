@@ -1,0 +1,18 @@
+=javascript_include_tag 'js/tag_search.js'
+
+%h3#title
+  タグ一覧
+= form_for '@tag', html: {autocomplete: 'off'}, url: {controller: 'tags', action: 'create'} do |f|
+  = p '検索'
+  = f.text_field :name
+  = f.submit '新規登録'
+  %p{style: 'margin-left: 20px'} ※半角スペースでor検索になります
+
+= search_form_for @b do |frm|
+  %table{ class: 'tag_list' }
+    %thead
+      %tr
+        %th タグ名
+        %th{colspan: 2} 操作
+    %tbody
+  = button_to('チェックを付けたタグで検索', {}, {id: 'search-by-tag'})

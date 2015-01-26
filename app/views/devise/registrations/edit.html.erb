@@ -1,0 +1,37 @@
+<h3 id='title'>プロフィール変更</h3>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :name, "名前" %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :password, "新しいパスワード" %> <i>(変更させたくない場合は空白にしてください)</i><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, "新しいパスワード(再入力)" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password, "現在のパスワード" %> <i>(変更するために現在のパスワードを入力してください)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+
+  <div class="submit">
+    <%= f.submit "更新" %>
+  </div>
+<% end %>
+
+<h3 id='title'>アカウントを削除？</h3>
+
+<p> <%= button_to "アカウントを削除", registration_path(resource_name), data: { confirm: "本当にアカウントを消して良いですか" }, method: :delete %></p>

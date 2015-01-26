@@ -19,6 +19,7 @@
 *.log
 tmp/**/*
 tmp/*
+pdf/*
 *.swp
 *~
 .DS_Store

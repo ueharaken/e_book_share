@@ -1,4 +1,23 @@
 EBookShare::Application.routes.draw do
+  devise_for :users
+  root to: "books#index"
+  resources :books do
+    member do
+      post 'download_file'
+      get 'get_thumbnail'
+    end
+  end
+  resources :tags do
+    collection do
+      get 'return_json_tags'
+    end
+  end
+  post "tags/:id/update" => "tags#update"
+  resources :bookshelves do
+    collection do
+      get 'return_json_unfav_tags'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

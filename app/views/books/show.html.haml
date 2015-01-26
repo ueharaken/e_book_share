@@ -1,0 +1,35 @@
+%h3#title 書籍情報
+
+%div.show-book.clearfix
+  = image_tag(url_for(action: 'get_thumbnail', id: @book.id))
+  %div.book-info
+    %h3=p @book.name
+    %table
+      %tr
+        %td
+          著者
+        %td
+          =p ': ' + @book.author
+      %tr
+        %td
+          出版社
+        %td
+          =p ': ' + @book.publisher
+      %tr
+        %td
+          価格
+        %td
+          =p ': ' + @book.price.to_s
+    - if @tag.empty? 
+      %p タグがありません
+    - else
+      %div
+        %p タグ
+        - @tag.each do |t|
+          = link_to t.name, books_path + '?tag_id%5B%5D=' + t.id.to_s + '&tag_name=' + t.name
+  %table.controll
+    %tr
+      %th{colspan: 2}= button_to 'ダウンロード', download_file_book_path(@book)
+    %tr
+      %td= link_to '編集', edit_book_path(@book)
+      %td= link_to '削除', book_path(@book), method: :delete, data: { confirm: '削除します' }

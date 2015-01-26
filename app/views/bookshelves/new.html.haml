@@ -1,0 +1,13 @@
+=javascript_include_tag 'js/bookshelf_tag_search.js'
+
+%h3#title 本棚登録
+
+= label :_tag_name, 'タグ絞り込み'
+= text_field_tag :_tag_name
+%p
+  ※半角スペースでor検索
+  %br
+  ※表示は30件まで
+= form_for '@bookshelf', url: {controller: 'bookshelves', action: 'create'} do |f|
+  %div{class: 'tag_list'}
+  %p.submit= f.submit '登録'

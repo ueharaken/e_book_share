@@ -1,0 +1,34 @@
+
+%html
+  %head
+    %title EBookShare
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    %body
+      .navbar.navbar-fixed-top
+        .navbar-inner
+          .container
+            %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+            %a.brand(href="#") EBookShare
+            .container.nav-collapse
+              %ul.nav
+                - if user_signed_in?
+                  %li{ id: 'name'}= current_user.name + ' さん'
+                  %li= link_to "ログアウト", destroy_user_session_path, method: :delete
+                  %li= link_to "プロフィール変更", edit_user_registration_path
+                  %li= link_to "本棚", bookshelves_path
+                  %li= link_to "本棚登録", new_bookshelf_path
+                - else
+                  %li= link_to "アカウント登録", new_user_registration_path
+                  %li= link_to "ログイン", new_user_session_path
+                %li= link_to "新規登録", new_book_path
+                %li= link_to "本一覧", books_path
+                %li= link_to "タグ一覧", tags_path
+      .contain
+        = bootstrap_flash
+        = yield

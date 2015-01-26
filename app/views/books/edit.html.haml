@@ -1,0 +1,40 @@
+= javascript_include_tag 'js/tag_input.js'
+
+%h3#title 書籍編集
+= form_for '@book', url: {controller: 'books', action: 'update'}, method: 'patch' do |f|
+  %table.input-table
+    %tbody
+      %tr
+        %th
+          = f.label :name, '名前'
+        %td
+          = f.text_field :name, value: @book.name
+      %tr
+        %th
+          = f.label :author, '著者'
+        %td
+          = f.text_field :author, value: @book.author
+      %tr
+        %th
+          = f.label :publisher, '出版社'
+        %td
+          = f.text_field :publisher, value: @book.publisher
+      %tr
+        %th
+          = f.label :tag, 'タグ'
+          %p
+            %input{type: 'button', class: 'add_tag', value: '追加'}
+            %input{type: 'button', class: 'remove_tag', value: '削除'}
+        %td
+          %ul{ id: 'input_taglist', style: 'list-style-type: none;'}
+            - @tag.each do |t|
+              %li
+                %input{type: 'text', class: 'tags', name: 'tags[]', value: t.name }
+            %li
+              %input{type: 'text', class: 'tags', name: 'tags[]' }
+      %tr
+        %th
+          = f.label :price, '価格'
+        %td
+          = f.text_field :price, value: @book.price
+  %p.submit= f.submit '登録'

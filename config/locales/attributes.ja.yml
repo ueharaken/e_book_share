@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        current_password: 現在のパスワード
+        name: 名前
+        password: パスワード
+        password_confirmation: パスワード（再入力）
