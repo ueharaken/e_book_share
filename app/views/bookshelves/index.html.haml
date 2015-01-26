@@ -1,0 +1,14 @@
+%h3#title 本棚
+
+%table{class: 'tag_list'}
+  %thead
+    %tr
+      %th 本棚名
+      %th 操作
+  %tbody
+    -@bookshelves.each do |b|
+      %tr
+        %td= link_to b.name, '/books?tag_id[]=' + b.id.to_s
+        %td= link_to '削除', bookshelf_path(b), method: :delete, data: { confirm: '削除します' }
+
+

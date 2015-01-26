@@ -13,6 +13,11 @@ EBookShare::Application.routes.draw do
     end
   end
   post "tags/:id/update" => "tags#update"
+  resources :bookshelves do
+    collection do
+      get 'return_json_unfav_tags'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141222053657) do
+ActiveRecord::Schema.define(version: 20150124075909) do
 
   create_table "books", force: true do |t|
     t.string   "name",                         null: false
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20141222053657) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "bookshelves", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bookshelves", ["tag_id"], name: "index_bookshelves_on_tag_id", using: :btree
+  add_index "bookshelves", ["user_id", "tag_id"], name: "index_bookshelves_on_user_id_and_tag_id", unique: true, using: :btree
+  add_index "bookshelves", ["user_id"], name: "index_bookshelves_on_user_id", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
